@@ -44,6 +44,16 @@ bool SolveSudoku(int grid[N][N])
     return false; // this triggers backtracking 
 } 
 
+/* Returns a boolean which indicates whether an assigned entry 
+   in the specified column matches the given number. */
+bool UsedInCol(int grid[N][N], int col, int num) 
+{ 
+    for (int row = 0; row < N; row++) 
+        if (grid[row][col] == num) 
+            return true; 
+    return false; 
+} 
+
   
 /* Returns a boolean which indicates whether an assigned entry 
    in the specified row matches the given number. */
@@ -54,18 +64,6 @@ bool UsedInRow(int grid[N][N], int row, int num)
             return true; 
     return false; 
 } 
-  
-/* Returns a boolean which indicates whether an assigned entry 
-   in the specified column matches the given number. */
-bool UsedInCol(int grid[N][N], int col, int num) 
-{ 
-    for (int row = 0; row < N; row++) 
-        if (grid[row][col] == num) 
-            return true; 
-    return false; 
-} 
-  
-  
 /* Searches the grid to find an entry that is still unassigned. If 
    found, the reference parameters row, col will be set the location 
    that is unassigned, and true is returned. If no unassigned entries 
